@@ -18,7 +18,7 @@ ownership integer,
 admission_rate float);
 """
 
-df = pandas.read_csv('../data/CollegeScorecard_Raw_Data/MERGED2016_17_PP.csv',
+df = pandas.read_csv('../data/MERGED2016_17_PP.csv',
                      header=0,
                      low_memory=False)
 

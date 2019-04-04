@@ -43,19 +43,10 @@ for fileName in csvFiles:
     df = pandas.read_csv('../data/{0}'.format(fileName),
                          header=0,
                          low_memory=False)
-    df = df[['UNITID',
-             'INSTNM',
-             'MN_EARN_WNE_P6',
-             'MN_EARN_WNE_MALE1_P6',
-             'MN_EARN_WNE_MALE0_P6',
-             'MN_EARN_WNE_P7',
-             'MN_EARN_WNE_P8',
-             'MN_EARN_WNE_P9',
-             'MN_EARN_WNE_P10',
-             'MN_EARN_WNE_MALE1_P10',
-             'MN_EARN_WNE_MALE0_P10',
-             'NPT4_PUB',
-             'NPT4_PRIV']]
+    df = df[["UNITID", 'INSTNM', "ADM_RATE", "SAT_AVG",
+             "UGDS", "UGDS_WHITE",
+             "UGDS_BLACK", "UGDS_HISP",
+             "UGDS_ASIAN"]]
 cur.executemany("INSERT INTO earnings VALUES (?,?,{0},?,?,?,?,?,?,?,?,?,?,?)".format(
     fileName[8:10]), df.itertuples(index=False))
 conn.commit()

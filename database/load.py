@@ -1,33 +1,52 @@
 import sqlite3
 import pandas
+import psycopg2
 
-conn = sqlite3.connect('testing.db')
+# conn = sqlite3.connect('testing.db')
+#
+# cur = conn.cursor()
+
+conn = psycopg2.connect(
+    dbname='postgres',
+    user='JoshLevin',
+    password='',
+    host='localhost',
+    port=5432)
 
 cur = conn.cursor()
 
-conn.execute("")
+# df = pandas.read_csv('../data/CollegeScorecard_Raw_Data/MERGED2016_17_PP.csv',
+#                      header=0,
+#                      low_memory=False)
+# conn.execute("")
+#
+# sample_table = """
+# CREATE TABLE basics (
+# id integer,
+# name VARCHAR(256),
+# city VARCHAR(256),
+# state VARCHAR(256),
+# school_url VARCHAR(256),
+# ownership integer,
+# admission_rate float);
+# """
+#
+# df = pandas.read_csv('../data/CollegeScorecard_Raw_Data/MERGED2016_17_PP.csv',
+#                      header=0,
+#                      low_memory=False)
+#
+# df = df[['UNITID','INSTNM', 'CITY', 'STABBR','INSTURL','CONTROL','ADM_RATE']]
+#
+# print(df.columns)
+# #df.to_sql('testing_table', conn, if_exists='replace', index=False)
+# cur.execute(sample_table)
+# conn.commit()
+#
+# cur.executemany("INSERT INTO basics VALUES (?,?,?,?,?,?,?)", df.itertuples(index=False))
+# conn.commit()
 
-sample_table = """
-CREATE TABLE basics (
-id integer,
-name VARCHAR(256),
-city VARCHAR(256),
-state VARCHAR(256),
-school_url VARCHAR(256),
-ownership integer,
-admission_rate float);
-"""
+#
+# def createTables():
+#     cur
 
-df = pandas.read_csv('../data/CollegeScorecard_Raw_Data/MERGED2016_17_PP.csv',
-                     header=0,
-                     low_memory=False)
-
-df = df[['UNITID','INSTNM', 'CITY', 'STABBR','INSTURL','CONTROL','ADM_RATE']]
-
-print(df.columns)
-#df.to_sql('testing_table', conn, if_exists='replace', index=False)
-cur.execute(sample_table)
-conn.commit()
-
-cur.executemany("INSERT INTO basics VALUES (?,?,?,?,?,?,?)", df.itertuples(index=False))
-conn.commit()
+# def main():
